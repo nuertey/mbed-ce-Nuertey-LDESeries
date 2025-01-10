@@ -220,7 +220,7 @@ namespace Utilities
     extern size_t                           g_MessageLength;
     extern std::unique_ptr<MQTT::Message>   g_pMessage;
 
-    extern PlatformMutex                    g_STDIOMutex;
+    extern Mutex                            g_STDIOMutex;
     extern EthernetInterface                g_EthernetInterface;
     //extern NTPClient                        g_NTPClient;
     extern NuerteyNTPClient                 g_NTPClient;

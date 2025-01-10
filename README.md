@@ -94,32 +94,42 @@ struct LDE_S500_B_t {};
 
 ## DEPENDENCIES - CODING LANGUAGE/OS/COMPILATION TARGET/COMPILER:
   - C++20
-  - mbed-os-6.15.1
+  - mbed-ce
   - NUCLEO F767ZI
-  - GCC ARM 10.3.1
-    - arm-none-eabi-g++ (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)
-    - gcc-arm-none-eabi-10.3-2021.10/bin
+  - GCC ARM 13.2.1 (GNU Arm Embedded Toolchain)
+    - arm-none-eabi-g++ (15:13.2.rel1-2) 13.2.1 20231009
+    - arm-none-eabi-gcc (15:13.2.rel1-2) 13.2.1 20231009
 
 ```console 
-(py37-venv) nuertey@nuertey-PC:/.../Nuertey-LDESeries-Mbed$ mbed config -L
+(py312-venv) osboxes@osboxes:~/Workspace/mbed-ce-Nuertey-LDESeries/build$ cmake .. -GNinja -DCMAKE_BUILD_TYPE=Develop -DMBED_TARGET=NUCLEO_F767ZI
 
-[mbed] Global config:
-GCC_ARM_PATH=.../opt/gcc-arm-none-eabi-10.3-2021.10/bin
+-- Found Python3: /home/osboxes/Workspace/py312-venv/bin/python3 (found version "3.12.7") found components: Interpreter
+-- Mbed: Creating virtual environment with Python interpreter /home/osboxes/Workspace/py312-venv/bin/python3
+-- Found Python3: /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/mbed-os/venv/bin/python3 (found version "3.12.7") found components: Interpreter
+-- Mbed: Installing Python requirements for Mbed into venv
 
-[mbed] Local config (/.../Nuertey-LDESeries-Mbed):
-TARGET=nucleo_f767zi
-TOOLCHAIN=GCC_ARM
+...
 
-(py37-venv) nuertey@nuertey-PC:/.../Nuertey-LDESeries-Mbed$ cd mbed-os/
+INFO: Found existing Mbed program at path '/home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries'
+Summary of available memory banks:
+Target RAM banks: 
+-----------------------------------------------------------
+0. IRAM1, start addr 0x20020000, size 384.0 KiB
+1. IRAM2, start addr 0x20000000, size 128.0 KiB
 
-(py37-venv) nuertey@nuertey-PC:/.../Nuertey-LDESeries-Mbed/mbed-os$ 
+Target ROM banks: 
+-----------------------------------------------------------
+0. ROM_VIA_ITCM_BUS, start addr 0x00200000, size 2.0 MiB
+1. ROM_VIA_AXIM_BUS, start addr 0x08000000, size 2.0 MiB
 
-(py37-venv) nuertey@nuertey-PC:/.../Nuertey-LDESeries-Mbed/mbed-os$ mbed ls
+...
 
-[mbed] Working path "/.../Nuertey-LDESeries-Mbed/mbed-os" (library)
-[mbed] Program path "/.../Nuertey-LDESeries-Mbed"
+-- The C compiler identification is GNU 13.2.1
+-- The CXX compiler identification is GNU 13.2.1
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/arm-none-eabi-gcc
 
-mbed-os (#2eb06e762085, tags: mbed-os-6.15.1, mbed-os-6.15.1-rc1)
+...
 
 ```
  

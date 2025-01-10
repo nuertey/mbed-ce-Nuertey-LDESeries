@@ -28,6 +28,9 @@
 #ifndef picojson_h
 #define picojson_h
 
+#define __STDC_FORMAT_MACROS 1
+#include <inttypes.h>
+
 #include "mbedtls/error.h"
 #include "mbed-trace/mbed_trace.h"
 #include <algorithm>
@@ -39,6 +42,11 @@
 #include <iterator>
 #include <limits>
 #include <map>
+
+//#define __STDC_FORMAT_MACROS 1
+#include <cmath>
+#include <cinttypes>
+
 #if (!defined(PICOJSON_NO_EXCEPTIONS))
 #include <stdexcept>
 #endif // PICOJSON_NO_EXCEPTIONS)
@@ -49,6 +57,7 @@
 // for isnan/isinf
 #if __cplusplus >= 201103L
 #include <cmath>
+#include <cinttypes>
 #else
 extern "C" {
 #ifdef _MSC_VER
@@ -79,7 +88,7 @@ extern "C" {
 
 // experimental support for int64_t (see README.mkdn for detail)
 #ifdef PICOJSON_USE_INT64
-#define __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS 1
 #include <errno.h>
 #include <inttypes.h>
 #endif
@@ -416,7 +425,7 @@ GET(array, *u_.array_)
 GET(object, *u_.object_)
 #ifdef PICOJSON_USE_INT64
 GET(double,
-    (type_ == int64_type && (const_cast<value *>(this)->type_ = number_type, const_cast<value *>(this)->u_.number_ = u_.int64_),
+    (type_ == int64_type && ((const_cast<value *>(this)->type_ = number_type), (const_cast<value *>(this)->u_.number_ = u_.int64_)),
      u_.number_))
 GET(int64_t, u_.int64_)
 #else
@@ -518,7 +527,7 @@ inline std::string value::to_str() const {
 #ifdef PICOJSON_USE_INT64
   case int64_type: {
     char buf[sizeof("-9223372036854775808")];
-    SNPRINTF(buf, sizeof(buf), "%" PRId64, u_.int64_);
+    SNPRINTF(buf, sizeof(buf), "%lld", u_.int64_);
     return buf;
   }
 #endif

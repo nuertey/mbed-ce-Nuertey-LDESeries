@@ -26,7 +26,7 @@ namespace Utilities
     // threads, periodic events and periodic callbacks (not in IRQ context
     // but when safely translated into the EventQueue context). Essentially,
     // ensure our output does not come out garbled on the serial terminal.
-    PlatformMutex                    g_STDIOMutex; 
+    Mutex                            g_STDIOMutex; 
     EthernetInterface                g_EthernetInterface;
     //NTPClient                        g_NTPClient(&g_EthernetInterface);
     NuerteyNTPClient                 g_NTPClient(&g_EthernetInterface);
