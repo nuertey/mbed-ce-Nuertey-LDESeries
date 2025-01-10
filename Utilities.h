@@ -325,34 +325,6 @@ namespace Utilities
 
         return result;
     }
-    
-    template <typename T>
-    constexpr auto TruncateAndToString = [](const T& x, const int& decimalDigits = 2)
-    {
-        std::ostringstream oss;  
-        oss << std::fixed;
-        oss.precision(decimalDigits);
-        oss << x;
-        return oss.str();
-    };
-    
-    const auto TemperatureToString = [](const float& temperature)
-    {
-        std::ostringstream oss;  
-        oss << std::fixed;
-        oss.precision(2);
-        oss << "Temp: " << temperature << " F";
-        return oss.str();
-    };
-    
-    const auto HumidityToString = [](const float& humidity)
-    {
-        std::ostringstream oss;  
-        oss << std::fixed;
-        oss.precision(2);
-        oss << "Humi: " << humidity << " % RH";
-        return oss.str();
-    };
 
     template <typename E>
     constexpr auto ToIntegral(E e) -> typename std::underlying_type<E>::type

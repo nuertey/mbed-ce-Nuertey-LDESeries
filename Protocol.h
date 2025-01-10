@@ -22,9 +22,9 @@
 *
 * @author  Nuertey Odzeyem
 * 
-* @date    November 28, 2021
+* @date    January 10, 2025
 *
-* @copyright Copyright (c) 2021 Nuertey Odzeyem. All Rights Reserved.
+* @copyright Copyright (c) 2025 Nuertey Odzeyem. All Rights Reserved.
 ***********************************************************************/
 #pragma once
 
@@ -35,7 +35,39 @@
 //
 // https://www.first-sensor.com/cms/upload/datasheets/DS_Standard-LDE_E_11815.pdf
 
-#include "Utilities.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+#include <inttypes.h>
+
+#include <span> // std::span (C++20) is a safer alternative to separated pointer/size.
+#include <bitset>
+#include <cmath>
+#include <ctime>
+#include <cctype>
+#include <climits>
+#include <cstdio>
+#include <cstring>
+#include <cstddef>
+#include <cstdlib>
+#include <cstdint>
+#include <cassert>
+#include <memory>
+#include <utility> 
+#include <type_traits>
+#include <algorithm>
+#include <functional>
+#include <optional>
+#include <iomanip>
+#include <ostream>
+#include <sstream>
+#include <map>
+#include <array>
+#include <tuple>
+#include <string>
+#include <chrono>
+
+//#include "mbed_mem_trace.h"
 
 // \"
 // Series     Pressure Range                    Calibration
@@ -278,3 +310,31 @@ namespace ProtocolDefinitions
     }
     
 } // End of namespace ProtocolDefinitions.
+
+template <typename T>
+constexpr auto TruncateAndToString = [](const T& x, const int& decimalDigits = 2)
+{
+	std::ostringstream oss;  
+	oss << std::fixed;
+	oss.precision(decimalDigits);
+	oss << x;
+	return oss.str();
+};
+
+const auto TemperatureToString = [](const float& temperature)
+{
+	std::ostringstream oss;  
+	oss << std::fixed;
+	oss.precision(2);
+	oss << "Temp: " << temperature << " F";
+	return oss.str();
+};
+
+const auto HumidityToString = [](const float& humidity)
+{
+	std::ostringstream oss;  
+	oss << std::fixed;
+	oss.precision(2);
+	oss << "Humi: " << humidity << " % RH";
+	return oss.str();
+};

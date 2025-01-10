@@ -177,7 +177,6 @@
 #include <system_error>
 #include "Protocol.h" 
 
-using namespace Utilities;
 using namespace ProtocolDefinitions;
 
 // SPI communication transfers data between the SPI master and 

@@ -140,66 +140,52 @@ int main()
     g_LEDBlue = LED_ON;
     g_LEDGreen = LED_ON;
 
-    if (Utilities::InitializeGlobalResources())
-    {
-        printf("\r\n%s\r\n", Utilities::g_NetworkInterfaceInfo.c_str());
-        printf("\r\n%s\r\n", Utilities::g_SystemProfile.c_str());
-        printf("\r\n%s\r\n", Utilities::g_BaseRegisterValues.c_str());
-        printf("\r\n%s\r\n", Utilities::g_HeapStatistics.c_str());
+	// Allow the sensor device time to stabilize from powering on 
+	// and time enough for it to accumulate continuously measuring
+	// temperature and pressure. Ergo:
+	//
+	// \" Power-on time 25 ms. \"
+	//
+	// \" When powered on, the sensor begins to continuously measure
+	// pressure. \"
+	ThisThread::sleep_for(25ms);        
 
-        // Allow the sensor device time to stabilize from powering on 
-        // and time enough for it to accumulate continuously measuring
-        // temperature and pressure. Ergo:
-        //
-        // \" Power-on time 25 ms. \"
-        //
-        // \" When powered on, the sensor begins to continuously measure
-        // pressure. \"
-        ThisThread::sleep_for(25ms);        
+	// Poll and query temperature and pressure measurements from LDE
+	// sensor part number, LDES250BF6S, for example:
+	printf("True differential pressure as measured in a Dry Air atmosphere:\n\t->%s Pa\n\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetPressure<LDE_S250_B_t, DryAirAtmosphere_t>()).c_str());
 
-        // Poll and query temperature and pressure measurements from LDE
-        // sensor part number, LDES250BF6S, for example:
-        printf("True differential pressure as measured in a Dry Air atmosphere:\n\t->%s Pa\n\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, DryAirAtmosphere_t>()).c_str());
+	printf("True differential pressure as measured in an Oxygen Gas atmosphere (O2):\n\t-> %s Pa\n\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetPressure<LDE_S250_B_t, OxygenGasAtmosphere_t>()).c_str());
+		
+	printf("True differential pressure as measured in a Nitrogen Gas atmosphere (N2):\n\t-> %s Pa\n\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetPressure<LDE_S250_B_t, NitrogenGasAtmosphere_t>()).c_str());
+		
+	printf("True differential pressure as measured in an Argon Gas atmosphere (Ar):\n\t-> %s Pa\n\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetPressure<LDE_S250_B_t, ArgonGasAtmosphere_t>()).c_str());
+		
+	printf("True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):\n\t-> %s Pa\n\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetPressure<LDE_S250_B_t, CarbonDioxideAtmosphere_t>()).c_str());
+	
+	printf("On-chip temperature sensor:\n\t-> %s °C\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetTemperature<Celsius_t>()).c_str());
+	
+	printf("On-chip temperature sensor:\n\t-> %s °F\n", 
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetTemperature<Fahrenheit_t>()).c_str());
+	
+	printf("On-chip temperature sensor:\n\t-> %s K\n",  
+		TruncateAndToString<double>(
+		g_LDESeriesDevice.GetTemperature<Kelvin_t>()).c_str());
 
-        printf("True differential pressure as measured in an Oxygen Gas atmosphere (O2):\n\t-> %s Pa\n\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, OxygenGasAtmosphere_t>()).c_str());
-            
-        printf("True differential pressure as measured in a Nitrogen Gas atmosphere (N2):\n\t-> %s Pa\n\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, NitrogenGasAtmosphere_t>()).c_str());
-            
-        printf("True differential pressure as measured in an Argon Gas atmosphere (Ar):\n\t-> %s Pa\n\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, ArgonGasAtmosphere_t>()).c_str());
-            
-        printf("True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):\n\t-> %s Pa\n\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, CarbonDioxideAtmosphere_t>()).c_str());
-        
-        printf("On-chip temperature sensor:\n\t-> %s °C\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetTemperature<Celsius_t>()).c_str());
-        
-        printf("On-chip temperature sensor:\n\t-> %s °F\n", 
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetTemperature<Fahrenheit_t>()).c_str());
-        
-        printf("On-chip temperature sensor:\n\t-> %s K\n",  
-            TruncateAndToString<double>(
-            g_LDESeriesDevice.GetTemperature<Kelvin_t>()).c_str());
-
-        // Allow the user the chance to view the results:
-        ThisThread::sleep_for(5s);
-    
-        Utilities::ReleaseGlobalResources();
-    }
-    else
-    {
-        printf("\r\n\r\nError! Initialization of Global Resources Failed!\n");
-    }
+	// Allow the user the chance to view the results:
+	ThisThread::sleep_for(5s);
 
     g_LEDGreen = LED_OFF;
     g_LEDBlue = LED_OFF;
