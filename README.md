@@ -96,9 +96,9 @@ struct LDE_S500_B_t {};
   - C++20
   - mbed-ce
   - NUCLEO F767ZI
-  - GCC ARM 13.2.1 (GNU Arm Embedded Toolchain)
-    - arm-none-eabi-g++ (15:13.2.rel1-2) 13.2.1 20231009
-    - arm-none-eabi-gcc (15:13.2.rel1-2) 13.2.1 20231009
+  - GCC ARM 14.2.1 (GNU Arm Embedded Toolchain)
+    - arm-none-eabi-g++ (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119
+    - arm-none-eabi-gcc (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119
  
 ## Compilation Output (Mbed CLI 1)
 
