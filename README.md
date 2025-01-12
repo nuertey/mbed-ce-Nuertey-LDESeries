@@ -190,7 +190,7 @@ drwxrwxr-x 15 osboxes osboxes     4096 Jan 12 03:44 mbed-os
 
 ## Tested Target (and Peripheral):
 
-Lacking an actual LDE Series pressure sensor on my workbench for testing, I am left to appeal to you OEMs or better-equipped IoT hobbyists out there. If you have a spare LDE Series pressure sensor dev board that can be connected to my STM32F767-ZI [Nucleo-144], kindly send me an email at nuertey_odzeyem@hotmail.com 
+Lacking an actual LDE Series pressure sensor on my workbench for testing, I am left to appeal to you OEMs or better-equipped IoT hobbyists out there. If you have a spare LDE Series pressure sensor breakout board that can be connected to my STM32F767-ZI [Nucleo-144], kindly send me an email at nuertey_odzeyem@hotmail.com 
 
 
 ## License
