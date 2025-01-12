@@ -99,74 +99,92 @@ struct LDE_S500_B_t {};
   - GCC ARM 13.2.1 (GNU Arm Embedded Toolchain)
     - arm-none-eabi-g++ (15:13.2.rel1-2) 13.2.1 20231009
     - arm-none-eabi-gcc (15:13.2.rel1-2) 13.2.1 20231009
-
-```console 
-(py312-venv) osboxes@osboxes:~/Workspace/mbed-ce-Nuertey-LDESeries/build$ cmake .. -GNinja -DCMAKE_BUILD_TYPE=Develop -DMBED_TARGET=NUCLEO_F767ZI
-
--- Found Python3: /home/osboxes/Workspace/py312-venv/bin/python3 (found version "3.12.7") found components: Interpreter
--- Mbed: Creating virtual environment with Python interpreter /home/osboxes/Workspace/py312-venv/bin/python3
--- Found Python3: /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/mbed-os/venv/bin/python3 (found version "3.12.7") found components: Interpreter
--- Mbed: Installing Python requirements for Mbed into venv
-
-...
-
-INFO: Found existing Mbed program at path '/home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries'
-Summary of available memory banks:
-Target RAM banks: 
------------------------------------------------------------
-0. IRAM1, start addr 0x20020000, size 384.0 KiB
-1. IRAM2, start addr 0x20000000, size 128.0 KiB
-
-Target ROM banks: 
------------------------------------------------------------
-0. ROM_VIA_ITCM_BUS, start addr 0x00200000, size 2.0 MiB
-1. ROM_VIA_AXIM_BUS, start addr 0x08000000, size 2.0 MiB
-
-...
-
--- The C compiler identification is GNU 13.2.1
--- The CXX compiler identification is GNU 13.2.1
--- The ASM compiler identification is GNU
--- Found assembler: /usr/bin/arm-none-eabi-gcc
-
-...
-
-```
  
 ## Compilation Output (Mbed CLI 1)
 
 ```console
-...
-Compile [ 99.9%]: mbed_crc_api.c
-Compile [100.0%]: stm32f7xx_hal_smbus.c
-Compile [100.0%]: gpio_api.c
-Link: Nuertey-LDESeries-Mbed
-Elf2Bin: Nuertey-LDESeries-Mbed
-| Module               |           .text |       .data |          .bss |
-|----------------------|-----------------|-------------|---------------|
-| NuerteyNTPClient.o   |     4042(+4042) |       4(+4) |     101(+101) |
-| Utilities.o          |     9592(+9592) |       4(+4) |     449(+449) |
-| [fill]               |       308(+308) |     21(+21) |       82(+82) |
-| [lib]/c.a            |   81456(+81456) | 2574(+2574) |       97(+97) |
-| [lib]/gcc.a          |     7416(+7416) |       0(+0) |         0(+0) |
-| [lib]/m.a            |       264(+264) |       0(+0) |         0(+0) |
-| [lib]/misc           |       188(+188) |       4(+4) |       28(+28) |
-| [lib]/nosys.a        |         32(+32) |       0(+0) |         0(+0) |
-| [lib]/stdc++.a       | 174244(+174244) |   145(+145) |   5720(+5720) |
-| main.o               |     3726(+3726) |       4(+4) |     261(+261) |
-| mbed-os/cmsis        |     9890(+9890) |   168(+168) | 14400(+14400) |
-| mbed-os/connectivity |   54186(+54186) |   103(+103) | 24059(+24059) |
-| mbed-os/drivers      |     1146(+1146) |       0(+0) |   1852(+1852) |
-| mbed-os/events       |     1776(+1776) |       0(+0) |   3104(+3104) |
-| mbed-os/hal          |     1528(+1528) |       8(+8) |     114(+114) |
-| mbed-os/platform     |     7166(+7166) |   340(+340) |     493(+493) |
-| mbed-os/rtos         |     1280(+1280) |       0(+0) |         8(+8) |
-| mbed-os/targets      |   17476(+17476) |       9(+9) |   1352(+1352) |
-| Subtotals            | 375716(+375716) | 3384(+3384) | 52120(+52120) |
-Total Static RAM memory (data + bss): 55504(+55504) bytes
-Total Flash memory (text + data): 379100(+379100) bytes
+(py312-venv) osboxes@osboxes:~/Workspace/mbed-ce-Nuertey-LDESeries/build$ cmake .. -GNinja -DMBED_TARGET=NUCLEO_F767ZI -DCMAKE_BUILD_TYPE=Develop
+-- Found Python3: /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/mbed-os/venv/bin/python3 (found version "3.12.7") found components: Interpreter
+-- Mbed: First CMake run detected, generating configs...
+INFO: Found existing Mbed program at path '/home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries'
+Summary of available memory banks:
+Target RAM banks: -----------------------------------------------------------
+0. IRAM1, start addr 0x20020000, size 384.0 KiB
+1. IRAM2, start addr 0x20000000, size 128.0 KiB
 
-Image: ./BUILD/NUCLEO_F767ZI/GCC_ARM-MY_PROFILE/Nuertey-LDESeries-Mbed.bin
+Target ROM banks: -----------------------------------------------------------
+0. ROM_VIA_ITCM_BUS, start addr 0x00200000, size 2.0 MiB
+1. ROM_VIA_AXIM_BUS, start addr 0x08000000, size 2.0 MiB
+
+mbed_config.cmake has been generated and written to '/home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/build/mbed_config.cmake'
+CMake Warning (dev) at mbed-os/tools/cmake/app.cmake:37 (enable_language):
+  project() should be called prior to this enable_language() call.
+Call Stack (most recent call first):
+  CMakeLists.txt:6 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- The C compiler identification is GNU 14.2.1
+-- The CXX compiler identification is GNU 14.2.1
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/local/gcc-arm/bin/arm-none-eabi-gcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/gcc-arm/bin/arm-none-eabi-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/gcc-arm/bin/arm-none-eabi-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Mbed: Loading default upload method configuration from /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/mbed-os/targets/upload_method_cfg/NUCLEO_F767ZI.cmake
+-- Mbed: Not building any Mbed OS tests.
+-- Mbed: Code upload enabled via upload method MBED
+-- Configuring done (2.5s)
+-- Generating done (0.2s)
+-- Build files have been written to: /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/build
+(py312-venv) osboxes@osboxes:~/Workspace/mbed-ce-Nuertey-LDESeries/build$ ninja
+[1/255] Generating ../mbed-nucleo-f767zi.link_script.ld
+Preprocess linker script: STM32F767xI.ld -> mbed-nucleo-f767zi.link_script.ld
+[255/255] Linking CXX executable Nuertey-LDESeries.elf
+-- built: /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/build/Nuertey-LDESeries.bin
+-- built: /home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/build/Nuertey-LDESeries.hex
+/home/osboxes/Workspace/mbed-ce-Nuertey-LDESeries/mbed-os/tools/python/memap/memap.py:63: DeprecationWarning: the 'HEADER' constant is deprecated, use the 'HRuleStyle' and 'VRuleStyle' enums instead
+  from prettytable import PrettyTable, HEADER
+| Module                           |           .text |       .data |          .bss |
+|----------------------------------|-----------------|-------------|---------------|
+| CMakeFiles/Nuertey-LDESeries.dir |     3451(+3451) |       4(+4) |     244(+244) |
+| [fill]                           |       426(+426) |     17(+17) |       42(+42) |
+| [lib]/c.a                        | 126451(+126451) | 4071(+4071) |     862(+862) |
+| [lib]/gcc.a                      |     7548(+7548) |       0(+0) |         0(+0) |
+| [lib]/misc                       |       292(+292) |     12(+12) |       25(+25) |
+| [lib]/stdc++.a                   | 227069(+227069) |   172(+172) |   4328(+4328) |
+| mbed-os/CMakeFiles               |   44566(+44566) |   444(+444) | 10059(+10059) |
+| Subtotals                        | 409803(+409803) | 4720(+4720) | 15560(+15560) |
+Total Static RAM memory (data + bss): 20280(+20280) bytes
+Total Flash memory (text + data): 414523(+414523) bytes
+
+RAM Bank IRAM1: 0(+0)/393216 bytes used, 0.0% (+0.0%) used
+RAM Bank IRAM2: 20536(+0)/131072 bytes used, 15.7% (+0.0%) used
+ROM Bank ROM_VIA_ITCM_BUS: 427807(+0)/2097152 bytes used, 20.4% (+0.0%) used
+ROM Bank ROM_VIA_AXIM_BUS: 0(+0)/2097152 bytes used, 0.0% (+0.0%) used
+
+(py312-venv) osboxes@osboxes:~/Workspace/mbed-ce-Nuertey-LDESeries/build$ ls -ll
+total 32132
+-rw-rw-r--  1 osboxes osboxes 11589303 Jan 12 03:44 build.ninja
+-rw-rw-r--  1 osboxes osboxes    21846 Jan 12 03:44 CMakeCache.txt
+drwxrwxr-x  6 osboxes osboxes     4096 Jan 12 03:44 CMakeFiles
+-rw-rw-r--  1 osboxes osboxes     2073 Jan 12 03:44 cmake_install.cmake
+-rw-rw-r--  1 osboxes osboxes    29994 Jan 12 03:44 mbed_config.cmake
+-rw-rw-r--  1 osboxes osboxes     2704 Jan 12 03:45 mbed-nucleo-f767zi.link_script.ld
+drwxrwxr-x 15 osboxes osboxes     4096 Jan 12 03:44 mbed-os
+-rw-rw-r--  1 osboxes osboxes     4173 Jan 12 03:44 memory_banks.json
+-rwxrwxr-x  1 osboxes osboxes   412940 Jan 12 03:45 Nuertey-LDESeries.bin
+-rwxrwxr-x  1 osboxes osboxes  5067772 Jan 12 03:45 Nuertey-LDESeries.elf
+-rw-rw-r--  1 osboxes osboxes 15077405 Jan 12 03:45 Nuertey-LDESeries.elf.map
+-rw-rw-r--  1 osboxes osboxes        0 Jan 12 03:45 Nuertey-LDESeries.elf.map.old
+-rw-rw-r--  1 osboxes osboxes  1161563 Jan 12 03:45 Nuertey-LDESeries.hex
+
 
 ```
 
@@ -178,7 +196,7 @@ Lacking an actual LDE Series pressure sensor on my workbench for testing, I am l
 ## License
 MIT License
 
-Copyright (c) 2021 Nuertey Odzeyem
+Copyright (c) 2025 Nuertey Odzeyem
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
