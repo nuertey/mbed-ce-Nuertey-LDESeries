@@ -6,7 +6,16 @@
 *
 * @brief   Test First Sensor AG LDE Series low pressure sensor device.
 * 
-* @note    
+* @note    The Nucleo F767ZI is a development board from STMicroelectronics 
+*          that includes an STM32F767ZIT6 microcontroller. The STM32F767ZI 
+*          has the following features: 
+* 
+*          – 512 KB of RAM
+*          – 2 MB of flash
+*          – 114 GPIOs with external interrupt capability
+*          – 12-bit ADCs with 24 channels
+*          – Arduino Uno Revision 3 connectivity
+*          – STMicroelectronics Morpho extension pin headers   
 *
 * @warning Note that the I/O pins of STM32 NUCLEO-F767ZI are 3.3 V 
 *          compatible instead of 5 V for say, the Arduino Uno V3 

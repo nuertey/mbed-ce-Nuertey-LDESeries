@@ -95,6 +95,8 @@ struct LDE_S500_B_t {};
 ## DEPENDENCIES - CODING LANGUAGE/OS/COMPILATION TARGET/COMPILER:
   - C++20
   - mbed-ce
+    - https://github.com/mbed-ce/mbed-os.git
+    - commit 8a8bc9ca361d1cc8590832c35298551ec2d265cc (HEAD -> master, origin/master, origin/HEAD)
   - NUCLEO F767ZI
   - GCC ARM 14.2.1 (GNU Arm Embedded Toolchain)
     - arm-none-eabi-g++ (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119
