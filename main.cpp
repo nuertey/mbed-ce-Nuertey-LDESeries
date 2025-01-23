@@ -166,23 +166,23 @@ int main()
         // sensor part number, LDES250BF6S, for example:
         printf("True differential pressure as measured in a Dry Air atmosphere:\n\t->%s Pa\n\n", 
             TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, DryAirAtmosphere_t>()).c_str());
+            g_LDESeriesDevice.GetPressure<LDE_S500_U_t, DryAirAtmosphere_t>()).c_str());
 
         printf("True differential pressure as measured in an Oxygen Gas atmosphere (O2):\n\t-> %s Pa\n\n", 
             TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, OxygenGasAtmosphere_t>()).c_str());
+            g_LDESeriesDevice.GetPressure<LDE_S500_U_t, OxygenGasAtmosphere_t>()).c_str());
             
         printf("True differential pressure as measured in a Nitrogen Gas atmosphere (N2):\n\t-> %s Pa\n\n", 
             TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, NitrogenGasAtmosphere_t>()).c_str());
+            g_LDESeriesDevice.GetPressure<LDE_S500_U_t, NitrogenGasAtmosphere_t>()).c_str());
             
         printf("True differential pressure as measured in an Argon Gas atmosphere (Ar):\n\t-> %s Pa\n\n", 
             TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, ArgonGasAtmosphere_t>()).c_str());
+            g_LDESeriesDevice.GetPressure<LDE_S500_U_t, ArgonGasAtmosphere_t>()).c_str());
             
         printf("True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):\n\t-> %s Pa\n\n", 
             TruncateAndToString<double>(
-            g_LDESeriesDevice.GetPressure<LDE_S250_B_t, CarbonDioxideAtmosphere_t>()).c_str());
+            g_LDESeriesDevice.GetPressure<LDE_S500_U_t, CarbonDioxideAtmosphere_t>()).c_str());
 
         printf("On-chip temperature sensor:\n\t-> %s °C\n", 
             TruncateAndToString<double>(
@@ -196,11 +196,11 @@ int main()
             TruncateAndToString<double>(
             g_LDESeriesDevice.GetTemperature<Kelvin_t>()).c_str());
 
-        // Allow the user the chance to view the results:
-        ThisThread::sleep_for(5s);
-
         g_LEDGreen = LED_OFF;
         g_LEDBlue = LED_OFF;
+
+        // Allow the user the chance to view the results:
+        ThisThread::sleep_for(5s);
     }
 	
     printf("\r\n\r\nNuertey-LDESeries-Mbed Application - Exiting.\r\n\r\n");
