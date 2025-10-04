@@ -27,10 +27,10 @@
 *          pin location may not be related to the pin name. Consult 
 *          the "Extension connectors" sub-chapter of the "Hardware 
 *          layout and configuration" chapter of the STM32 Nucleo-144 
-*          boards UM1974 User manual (en.DM00244518.pdf) to know where
+*          boards UM1974 User manual (en.DM00244518.pdf, page 33) to know where
 *          each pin is located. Note that all those pins shown can be 
 *          used as GPIOs, however most of them also have alternative 
-*          functions which are indicated on those diagrams.
+*          functions which are indicated on these diagrams (Table 13, page 38).
 *
 * @author    Nuertey Odzeyem
 * 
