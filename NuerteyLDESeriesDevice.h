@@ -404,7 +404,7 @@ bool NuerteyLDESeriesDevice::FullDuplexTransfer(const SPIFrame_t& cBuffer,
         result = false;
         
         // Enable to facilitate runtime debugging:
-        //DisplayFrame(rBuffer);
+        DisplayFrame(rBuffer);
     } 
     
     return result;

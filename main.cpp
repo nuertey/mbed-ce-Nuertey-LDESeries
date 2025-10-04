@@ -219,7 +219,7 @@ int main()
 
         // Poll and query temperature and pressure measurements from LDE
         // sensor part number, LDES500UF6S, for example:
-        printf("True differential pressure as measured in a Dry Air atmosphere:\n\t->%s Pa\n\n", 
+        printf("True differential pressure as measured in a Dry Air atmosphere:\n\t-> %s Pa\n\n", 
             TruncateAndToString<double>(
             g_LDESeriesDevice.GetPressure<LDE_S500_U_t, DryAirAtmosphere_t>()).c_str());
 
