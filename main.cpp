@@ -74,6 +74,11 @@
 // If these series resistors are used, they must be physically placed as
 // close as possible to the pins of the master and slave devices. \"
 
+// =============================================================================
+// Hardware Layout and Configuration                                      UM1974
+//
+// Table 13. NUCLEO-F746ZG, NUCLEO-F756ZG and NUCLEO-F767ZI pin assignments
+//
 // Connector: CN7 
 // Pin      : 14 
 // Pin Name : D11       * Arduino-equivalent pin name
@@ -97,6 +102,56 @@
 // Pin Name : D10       * Arduino-equivalent pin name
 // STM32 Pin: PD14
 // Signal   : SPI_A_CS/TIM_B_PWM3
+// =============================================================================
+
+// =============================================================================
+// First Sensor
+//
+// LDE series - digital low differential pressure sensors
+//
+// - LDE...E... (SMD, 2 [High Pressure] ports same side) 
+//   uppermost port to the right, lowermost port to the left
+//   pins 10, 9, 8, 7, 6 next (and descending downwards) to the uppermost port
+//   pins 1, 2, 3, 4, 5 next (and descending downwards) to the lowermost port
+//
+// Electrical connection [*18]
+//
+// There are three use cases that will change the manner in which the LDE series device is connected in-circuit:
+// Case 1: Reading of pressure measurement as a digital (SPI) signal;
+// ...
+//
+// Pin         Function         Case 1: Digital signal output
+// ---         ---------        -----------------------------
+// 1           Reserved         NC
+// 2           Vˢ               +5V/+3V
+// 3           GND              GND
+// 4           Vout             NC
+// 5           Vout             NC
+// 6           SCLK             Master device SCLK
+// 7           MOSI             Master device MOSI
+// 8           MISO             Master device MISO
+// 9           /CS              Master device (/CS)
+// 10          Reserved         NC
+//
+// Ordering information
+//
+// Series
+// ------
+// LDE
+//
+// Pressure range                 Calibration            Housing                       Output                              Grade
+// --------------------------     ------------------     ---------------------------   ------------------------------      ---------
+// S025    25 Pa (0.1 in H2O)     B    Bidirectional     E [SMD, 2 ports, same side]   3 [Non-ratiometric, 3V supply]      S [High]
+// S050    50 Pa (0.2 in H2O)     U    Unidirectional    F [DIP, 2 ports, same side]   6 [Non-ratiometric, 5V supply]
+// S100    100 Pa (0.4 in H2O)     
+// S250    250 Pa (1 in H2O)     
+// S500    500 Pa (2 in H2O)     
+//
+// Order code example: LDES250BF6S
+//
+// Specification notes (cont.)
+// [*18] The maximum voltage applied to pin 1 and pins 6 through 10 should not exceed Vˢ+0.3V.
+// =============================================================================
 
 // TBD, do actually connect these pins to the sensor once it arrives.
 //
@@ -163,7 +218,7 @@ int main()
         g_LEDGreen = LED_ON;      
 
         // Poll and query temperature and pressure measurements from LDE
-        // sensor part number, LDES250BF6S, for example:
+        // sensor part number, LDES500UF6S, for example:
         printf("True differential pressure as measured in a Dry Air atmosphere:\n\t->%s Pa\n\n", 
             TruncateAndToString<double>(
             g_LDESeriesDevice.GetPressure<LDE_S500_U_t, DryAirAtmosphere_t>()).c_str());

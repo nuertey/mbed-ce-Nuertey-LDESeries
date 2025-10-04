@@ -85,7 +85,7 @@ struct LDE_S025_U_t {};
 struct LDE_S050_U_t {};
 struct LDE_S100_U_t {};
 struct LDE_S250_U_t {}; // Example, LDES250UF6S. 
-struct LDE_S500_U_t {};
+struct LDE_S500_U_t {}; // Example, LDES500UF6S.
 struct LDE_S025_B_t {};
 struct LDE_S050_B_t {};
 struct LDE_S100_B_t {};

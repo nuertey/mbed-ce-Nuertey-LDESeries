@@ -84,7 +84,7 @@ struct LDE_S025_U_t {};
 struct LDE_S050_U_t {};
 struct LDE_S100_U_t {};
 struct LDE_S250_U_t {}; // Example, LDES250UF6S. 
-struct LDE_S500_U_t {};
+struct LDE_S500_U_t {}; // Example, LDES500UF6S.
 struct LDE_S025_B_t {};
 struct LDE_S050_B_t {};
 struct LDE_S100_B_t {};
@@ -190,9 +190,155 @@ drwxrwxr-x 15 osboxes osboxes     4096 Jan 12 03:44 mbed-os
 
 ```
 
-## Tested Target (and Peripheral):
+## Execution Output Snippet: 
 
-Lacking an actual LDE Series pressure sensor on my workbench for testing, I am left to appeal to you OEMs or better-equipped IoT hobbyists out there. If you have a spare LDE Series pressure sensor breakout board that can be connected to my STM32F767-ZI [Nucleo-144], kindly send me an email at nuertey_odzeyem@hotmail.com 
+> [!CAUTION]
+> Further debug of sensor circuit wiring and testing continues... 
+
+```shell-session
+
+nuertey@nuertey-PC-LL850RSB:~$ kermit -c
+Connecting to /dev/ttyACM0, speed 115200
+ Escape character: Ctrl-\ (ASCII 28, FS): enabled
+Type the escape character followed by C to get back,
+or followed by ? to see other options.
+----------------------------------------------------
+
+
+Nuertey-LDESeries-Mbed - Beginning... 
+
+True differential pressure as measured in a Dry Air atmosphere:
+    ->0.00 Pa
+
+True differential pressure as measured in an Oxygen Gas atmosphere (O2):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Nitrogen Gas atmosphere (N2):
+    -> 0.00 Pa
+
+True differential pressure as measured in an Argon Gas atmosphere (Ar):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):
+    -> 0.00 Pa
+
+On-chip temperature sensor:
+    -> 0.00 °C
+On-chip temperature sensor:
+    -> 32.00 °F
+On-chip temperature sensor:
+    -> 273.00 K
+True differential pressure as measured in a Dry Air atmosphere:
+    ->0.00 Pa
+
+True differential pressure as measured in an Oxygen Gas atmosphere (O2):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Nitrogen Gas atmosphere (N2):
+    -> 0.00 Pa
+
+True differential pressure as measured in an Argon Gas atmosphere (Ar):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):
+    -> 0.00 Pa
+
+On-chip temperature sensor:
+    -> 0.00 °C
+On-chip temperature sensor:
+    -> 32.00 °F
+On-chip temperature sensor:
+    -> 273.00 K
+True differential pressure as measured in a Dry Air atmosphere:
+    ->0.00 Pa
+
+True differential pressure as measured in an Oxygen Gas atmosphere (O2):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Nitrogen Gas atmosphere (N2):
+    -> 0.00 Pa
+
+True differential pressure as measured in an Argon Gas atmosphere (Ar):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):
+    -> 0.00 Pa
+
+On-chip temperature sensor:
+    -> 0.00 °C
+On-chip temperature sensor:
+    -> 32.00 °F
+On-chip temperature sensor:
+    -> 318.55 K
+True differential pressure as measured in a Dry Air atmosphere:
+    ->0.00 Pa
+
+True differential pressure as measured in an Oxygen Gas atmosphere (O2):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Nitrogen Gas atmosphere (N2):
+    -> 0.00 Pa
+
+True differential pressure as measured in an Argon Gas atmosphere (Ar):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):
+    -> 0.00 Pa
+
+On-chip temperature sensor:
+    -> 0.00 °C
+On-chip temperature sensor:
+    -> 32.00 °F
+On-chip temperature sensor:
+    -> 273.00 K
+True differential pressure as measured in a Dry Air atmosphere:
+    ->0.00 Pa
+
+True differential pressure as measured in an Oxygen Gas atmosphere (O2):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Nitrogen Gas atmosphere (N2):
+    -> 0.00 Pa
+
+True differential pressure as measured in an Argon Gas atmosphere (Ar):
+    -> 0.00 Pa
+
+True differential pressure as measured in a Carbon Dioxide atmosphere (CO2):
+    -> 0.00 Pa
+
+On-chip temperature sensor:
+    -> 0.00 °C
+On-chip temperature sensor:
+    -> 32.00 °F
+On-chip temperature sensor:
+    -> 273.00 K
+
+Communications disconnect (Back at nuertey-PC-LL850RSB)
+----------------------------------------------------
+C-Kermit 9.0.302 OPEN SOURCE:, 20 Aug 2011, for Linux+SSL+KRB5 (64-bit)
+ Copyright (C) 1985, 2011,
+  Trustees of Columbia University in the City of New York.
+Type ? or HELP for help.
+(/home/nuertey/) C-Kermit>
+
+
+```
+
+## Pictures Of STM32F767 MCU, the Running Code and LDES500UF6S Pressure Sensor in Action
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0003.JPG?raw=true)
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0004.JPG?raw=true)
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0005.JPG?raw=true)
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0006.JPG?raw=true)
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0007.JPG?raw=true)
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0009.JPG?raw=true)
+
+![alt text](https://github.com/nuertey/RandomArtifacts/blob/master/IMG_0010.JPG?raw=true)
 
 
 ## License
