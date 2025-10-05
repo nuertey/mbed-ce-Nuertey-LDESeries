@@ -424,7 +424,7 @@ double NuerteyLDESeriesDevice::ConvertPressure(const int16_t& sensorData) const
     // ΔPeff = ΔPSensor x gas correction factor = 500 Pa x 0.56 = 280 Pa
     //
     // ΔPeff = True differential pressure
-    // ΔP Sensor= Differential pressure as indicated by output signal \"    
+    // ΔP Sensor = Differential pressure as indicated by output signal \"    
     result = result * GasCorrectionFactor<A>::value;
     
     return result;
